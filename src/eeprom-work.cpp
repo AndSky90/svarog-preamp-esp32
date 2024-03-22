@@ -7,16 +7,16 @@ bool eepromInitialized()
 {
     return !EEPROM.begin(EEPROM_SIZE);
 }
-
-String readStringFromFlash(int startAddr)
+    // работает с байтами, char = 1 байт
+String readStringFromFlash(int startAddr, int size)
 {
-    char in[128]; // char array of size 128 for reading the stored data
+    char in[size];
     int i = 0;
-    for (; i < 128; i++)
+    for (; i < size; i++)
     {
         in[i] = EEPROM.read(startAddr + i);
     }
-    return String(in);
+    return in;
 }
 
 void writeStringToFlash(const char *toStore, int startAddr)
@@ -28,4 +28,10 @@ void writeStringToFlash(const char *toStore, int startAddr)
     }
     EEPROM.write(startAddr + i, '\0');
     EEPROM.commit();
+}
+
+void commitFlash()
+{
+    EEPROM.commit();
+    EEPROM.end();
 }
