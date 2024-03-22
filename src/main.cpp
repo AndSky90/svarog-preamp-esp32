@@ -77,6 +77,7 @@ void loopWebSocket()
 
   case WStype_BIN: // For everything else: do nothing
     Serial.printf("[%u] Bin: %s\n", num, payload);
+    break;
 
   case WStype_ERROR:
   case WStype_FRAGMENT_TEXT_START:

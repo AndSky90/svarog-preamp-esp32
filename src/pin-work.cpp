@@ -30,3 +30,8 @@ void loopResetWifiPin()
         ESP.restart();
     }
 }
+
+void preampPower(bool state)
+{
+    // if(state) вкл else выкл
+}

@@ -7,7 +7,7 @@ bool eepromInitialized()
 {
     return !EEPROM.begin(EEPROM_SIZE);
 }
-    // работает с байтами, char = 1 байт
+    // работает с байтами, char = 1 байт = 8 бит
 String readStringFromFlash(int startAddr, int size)
 {
     char in[size];
