@@ -1,7 +1,7 @@
 #include "EEPROM.h"
 
 #define EEPROM_SIZE 200           // EEPROM size
-#define LENGTH(x) (strlen(x) + 1) // length of char string
+// #define LENGTH(x) (strlen(x) + 1) // length of char string
 
 bool eepromInitialized()
 {
@@ -22,7 +22,7 @@ String readStringFromFlash(int startAddr, int size)
 void writeStringToFlash(const char *toStore, int startAddr)
 {
     int i = 0;
-    for (; i < LENGTH(toStore); i++)
+    for (; i < sizeof(toStore); i++)
     {
         EEPROM.write(startAddr + i, toStore[i]);
     }

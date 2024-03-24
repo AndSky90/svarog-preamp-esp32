@@ -19,7 +19,7 @@ void handleInit();
 
 void send(String state);
 
-String handleCommand(String command)
+void handleCommand(String command)
 {
     // timestamp newTs
     uint8_t tsBytes[8];
@@ -39,7 +39,7 @@ String handleCommand(String command)
         {
             handleInit();
             ts = newTs;
-            return state; // TODO
+           // return state; // TODO
         }
     }
     else
@@ -92,27 +92,13 @@ String handleCommand(String command)
         case 4:
         {
             outputChannel(cvalue);
-            if (cvalue == 0)
-            {
-                state[0] &= ~(1 << 7);
-            }
-            else
-            {
-                state[0] |= (1 << 7);
-            }
+            (cvalue == 0) ? state[0] &= ~(1 << 7) : state[0] |= (1 << 7);
             break;
         }
         case 5:
         {
             mute(cvalue);
-            if (cvalue == 0)
-            {
-                state[1] &= ~(1 << 0);
-            }
-            else
-            {
-                state[1] |= (1 << 0);
-            }
+            (cvalue == 0) ? state[1] &= ~(1 << 0) : state[1] |= (1 << 0);
             break;
         }
         case 6:
@@ -190,40 +176,19 @@ String handleCommand(String command)
         case 15:
         {
             restartEsp();
-            if (cvalue == 0)
-            {
-                state[6] &= ~(1 << 0);
-            }
-            else
-            {
-                state[6] |= (1 << 0);
-            }
+            (cvalue == 0) ? state[6] &= ~(1 << 0) : state[6] |= (1 << 0);
             break;
         }
         case 16:
         {
             resetSettings();
-            if (cvalue == 0)
-            {
-                state[6] &= ~(1 << 1);
-            }
-            else
-            {
-                state[6] |= (1 << 1);
-            }
+            (cvalue == 0) ? state[6] &= ~(1 << 1) : state[6] |= (1 << 1);
             break;
         }
         case 17:
         {
             resetAll();
-            if (cvalue == 0)
-            {
-                state[6] &= ~(1 << 2);
-            }
-            else
-            {
-                state[6] |= (1 << 2);
-            }
+            (cvalue == 0) ? state[6] &= ~(1 << 2) : state[6] |= (1 << 2);
             break;
         }
         case 18:

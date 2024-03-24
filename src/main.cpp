@@ -33,6 +33,7 @@ void finishFlash();
 void pinSetup();
 void loopResetWifiPin();
 
+
 //Methods
 
 void loopWebSocket()
@@ -42,7 +43,6 @@ void loopWebSocket()
   {
     auto msg = client.readBlocking();
 
-    Serial.print("Got Message: ");
     Serial.println(msg.data()); // message
     //  Serial.println(msg.rawData()); //message raw data
     //  Serial.println(msg.c_str()); //message raw data
@@ -113,7 +113,7 @@ void setup()
   if (!eepromInitialized())
   {
     Serial.println("failed to init EEPROM");
-    delay(1000);
+    delay(500);
   }
   else
   {
