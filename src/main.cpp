@@ -33,7 +33,7 @@ void finishFlash();
 void pinSetup();
 void loopResetWifiPin();
 
-
+//без сна, тк в первом же стейте отключается блютус
 //Methods
 
 void loopWebSocket()
@@ -91,7 +91,7 @@ void loopWebSocket()
 
 void setupIfWifiConnected()
 {
-  server.listen(8080); // 356
+  server.listen(356);
   Serial.print("Is server live? ");
   isWifiWsEnabled = server.available();
   Serial.println(isWifiWsEnabled);
@@ -102,7 +102,7 @@ void setup()
 {
   pinSetup();
   Serial.begin(115200);
-
+  Serial.setDebugOutput(true);
   // Wire.begin(21, 22, 100000); // sda, scl, clock speed
   // Wire.beginTransmission(MPU_ADDR);
   //  Wire.write(0x6B);  // PWR_MGMT_1 register

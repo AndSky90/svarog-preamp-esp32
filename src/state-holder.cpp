@@ -205,6 +205,7 @@ void handleCommand(String command)
 
 String deviceCommand(String command)
 {
+    return String();
 }
 
 // 00 = preampPower, 00 = pilotPower, 000 = input channel, 0 = output channel
